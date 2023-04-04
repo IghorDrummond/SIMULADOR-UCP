@@ -1,0 +1,713 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho</title>
+    <!--Comando para css-->
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #Geral{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 10vh;
+            text-transform: uppercase;
+            background-image: linear-gradient(-60deg, #020024 0%, #9393e7 48%, #00d4ff 65%);
+            background-size: 200%;
+            animation: coresalteradas 15s linear infinite;
+        }
+        #Linha1{
+            border:2px solid black
+        }
+        #corpo{
+            position: relative;
+            width: 2048px;
+            height: 2570px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            background: blue;
+            text-transform: uppercase;
+            margin: auto;
+            background-size: 300%;
+         }
+        #caixa{
+            position: relative;
+            width: 2048px;
+            height: 2570px;
+            color: black;
+            font-weight: bold;
+            font-size: 10px;
+            border-radius: 6px;
+            background: white;
+            text-align: center;
+       }
+        #Titulo{
+            font-size: 35px;
+            text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+        }
+        #coluna1{
+            text-align: left;
+            float: top;
+        }
+        #BlocoTabela{
+            border: 4px solid purple;
+            height: 200;
+            text-align: center;
+        }
+        #blocotabela2{
+            border: 4px solid black;
+            height: 60px;
+            width: 250px;
+            color: purple;
+        }  
+        #campo1{
+            height: 60px;
+            width: 250px;
+            border: 4px solid purple;
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        } 
+        #BlocoTabela{
+            border: 4px solid purple;
+            height: 200;
+            text-align: center;
+        }        
+        #LISTA{
+            font-size: 25px;
+            color: purple;
+        }
+        #getdados{
+            width: 250px;
+            height: 35px;
+            font-size: 25px;
+            margin: 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: purple;
+        }
+        #corpo::before, #corpo::after{
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: calc(100% + 30px);
+            height: calc(100% + 30px);
+            border-radius: 6px;
+            background-image: linear-gradient(45deg, #ffff00 , #00ff00, #0099ff, #001aff, #a200ff, #ff0055, #ff0000,
+            #ffff00 , #00ff00, #0099ff, #001aff, #a200ff);
+            background-size: 300%;
+            animation: BORDARGB 10s linear alternate infinite;
+        }
+        #corpo::after{
+            filter: blur(50px);
+        }
+        #tabela1{
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            color: black;
+            height:100px;
+            width: 100%;
+        }
+        #tabela2{
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            font-weight: bold;
+            border: purple solid 4px;
+            text-align: center;
+            border-radius: 5px;
+            height:100px;
+            width: 100%;
+        }
+       #scrollradius{
+            border-radius: 50%;  
+            height:200px;
+        }
+        #botao{
+            margin-top: 10px;
+            border-radius: 6px;
+            width: 200px;
+            height: 45px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 25px;
+            background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            background-size: 300%;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+            outline: 1px solid;
+            outline-color: rgba(255, 255, 255, .5);
+            outline-offset: 0px;
+            text-shadow: none;
+            color: purple;
+            transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+            animation: BOTAOANIMADO 5s  alternate infinite;
+        }
+        #botao:hover {
+            border: 7px black solid;
+            border-color: palevioletred;
+            font-style: oblique;
+            font-weight: bold;
+            color: purple;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+            outline-color: rgba(255, 255, 255, 0);
+            outline-offset: 25px;
+            text-shadow: 1px 1px 2px #427388; 
+        }
+        #placamae{
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+            width: 50%;
+            height: 1200px;
+            margin: auto;
+            font-size: 55px;
+            font-weight: bold;
+            font-family: cursive;
+            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+            color: WHITE;
+        }
+        #contatoligado{
+            border: black 4px solid;
+            background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+            background-blend-mode: screen;
+        }
+        #alimentacao{
+            width: 100%;
+            height: 70px;
+            background: black;
+        }
+        #processador{
+            height: 190px;
+            width: 190px;
+            background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+            background-blend-mode: screen;       
+            border: black 4px solid;  
+            margin: auto;  
+            margin-top: 14px;
+            text-align: center; 
+            align-items: center;
+        }
+        #processadorbase{
+            margin: auto;  
+            margin-bottom: 25px;
+            height: 220px;
+            width: 220px;
+            background: #0a5a0a;  
+            border: black 2px solid;    
+            animation: animabarra 5s  alternate infinite; 
+        }
+        
+        #memoriaram{
+            width: 35px;
+            height: 600px;
+            margin-left: -100px;
+            margin-top: -390px;
+            background-color: #228B22;
+            border: black 4px solid;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #memoriaram2{
+            width: 35px;
+            height: 600px;
+            margin-left: -145px;
+            margin-top: -600px;
+            background-color: #228B22;
+            border: black 4px solid;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #memoriaram3{
+            width: 35px;
+            height: 600px;
+            margin-left: 290px;
+            margin-top: -600px;
+            background-color: #228B22;
+            border: black 4px solid;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #memoriaram4{
+            width: 35px;
+            height: 600px;
+            margin-left: 335px;
+            margin-top: -600px;
+            background-color: #228B22;
+            border: black 4px solid;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #chipram{
+            width: 25px;
+            height: 25px;
+            margin: auto;
+            border: black 4px solid;
+            background: black;
+            margin-top: 25px;
+        }
+        #barramento{
+            border-left: 6px solid black;
+            height: 364px;
+            position:absolute;
+            left: 50%;
+            margin-top: -365px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento2{
+            border-left: 6px solid black;
+            height: 364px;
+            position:absolute;
+            left: 50%;
+            margin-top: -365px;
+            margin-left: 25px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento3{
+            border-left: 6px solid black;
+            height: 364px;
+            position:absolute;
+            left: 50%;
+            margin-top: -365px;
+            margin-left: -25px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento4{
+            border-left: 6px solid black;
+            height: 364px;
+            position:absolute;
+            left: 50%;
+            margin-top: -365px;
+            margin-left: -50px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento5{
+            border-left: 6px solid black;
+            height: 364px;
+            position:absolute;
+            left: 50%;
+            margin-top: -365px;
+            margin-left: 50px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento6{
+            border-left: 6px solid black;
+            height: 100px;
+            position:absolute;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: 50px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento7{
+            border-left: 6px solid black;
+            height: 100px;
+            position:absolute;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: 25px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento8{
+            border-left: 6px solid black;
+            height: 100px;
+            position:absolute;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: -50px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento9{
+            border-left: 6px solid black;
+            height: 100px;
+            position:absolute;
+            left: 50%;
+            margin-top: -200px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #barramento10{
+            border-left: 6px solid black;
+            height: 100px;
+            position:absolute;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: -25px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #display{
+            color: #020024;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 6px;
+            border: 4px black solid;
+            height: 50px;
+            width: 150px;
+            background: white;
+            margin: auto;
+        }
+        /*
+        #credito{
+            margin-top: 10px;
+        }
+        */
+        #espacogarcia{
+            border: purple 4px solid;
+            border-radius: 5px;
+            width: 100%;
+            height: 200px;
+            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            font-size: center;
+        }
+        #achatadofala{
+            text-align: left;
+            margin-left: 15px;
+            color: purple;
+            font-size: 25px;
+
+        }
+        #garciachatado{
+            margin-right: 1px;
+        }
+        #controladora{
+            border: 6px black;
+            background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+            background-blend-mode: screen;
+            height: 100px;
+            width: 180px;
+            margin: auto;
+            margin-top: -100px;
+            animation: animabarra 5s  alternate infinite;
+        }
+        #registro{
+            color: #020024;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 6px;
+            border: 4px black solid;
+            height: 80px;
+            width: 150px;
+            background: white;
+            margin: auto;
+        }
+        #barramento11{
+            border-left: 6px solid black;
+            width: 95px;
+            margin-top: -100px;
+            margin-left: -65px;
+            animation: animabarra 5s  alternate infinite;           
+        }
+        #barramento12{
+            border-left: 6px solid black;
+            width: 95px;
+            margin-top: -33px;
+            margin-left: 194px;
+            animation: animabarra 5s  alternate infinite;           
+        }
+        /*Cubo 1*/
+        .face {
+            background: white;
+            border: 2px solid ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+            font-size: 25px;
+            font-weight: bold;
+            color: purple;
+            position: absolute;
+            background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            background-size: 300%;
+            border-color: palevioletred;
+        } 
+        .cube {
+            transform: rotateX(-20deg) rotateY(-10deg);
+            transform-style: preserve-3d;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            animation: cubogirando 10s ease infinite;
+         }
+        .frente{
+            transform: translateZ(100px);
+        }
+        .direita{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .atras{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .esquerda{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .topo{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .fundo{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        @keyframes BORDARGB{
+            0%{
+                background-position: 0;
+            }
+            100%{
+                background-position: 300%;
+            }
+        }
+        @keyframes coresalteradas{
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+        @keyframes BOTAOANIMADO{
+            0%{
+                background-position: 0%;
+            }
+            50%{
+                background-position: 50%;
+            }
+            100%{
+                background-position: 200% 0%;
+            }
+        }
+        @keyframes cubogirando{
+            0%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);             
+            }
+            25%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(90deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+            }
+            50%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+            }
+            75%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(269deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+            }
+            85%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(269deg) rotateZ(90deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+            }
+            100%{
+                transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);       
+            }
+        }
+        @keyframes animabarra{
+            0%{
+                border: black 4px solid;
+            }
+            25%{
+                border: yellow 4px solid;   
+            }
+            45%{
+                border: black 4px solid;              
+            }
+            75%{
+                border: yellow 4px solid;   
+            }
+            95%{
+                border: black 4px solid;
+            }
+        }
+    </style>
+    <!--Comando para javascript-->
+    <script>
+
+    </script>
+</head>
+<body id="Geral">
+    <div id="corpo">
+        <div id="caixa">
+            <header>
+                <h1 id="titulo">Simulador UCP</h1>
+            </header>
+            </br>
+            <hr id="Linha">
+            <table id="tabela1">
+                    <tr>
+                    <th id="campo1"><h1>C bus Address</h1></th>
+                    <th id="campo1"><h1>Memorias Rn</h1></th>
+                    <th id="campo1"><h1>A Bus Address</h1></th>
+                    <th id="campo1"><h1>B Bus Address</h1></th>
+                    </tr>
+                    <tr>
+                    <td id="BlocoTabela">
+                        <div class="cube">
+                            <div class=" face frente">R0</div>
+                            <div class=" face direita">R1</div>
+                            <div class=" face atras">R2</div>
+                            <div class=" face esquerda">R3</div>
+                            <div class=" face topo"></div>
+                            <div class=" face fundo"></div>
+                        </div>            
+                    </br></br><button id="botao" value = "troca">Registro</button>                                                     
+                    </td>
+                    <td id="BlocoTabela">
+                        <table>
+                            <tr>
+                                <ul ID="LISTA">
+                                    <li>R0:<input id="getdados" type="number"></input></li>
+                                    <li>R1:<input id="getdados" type="number"></input></li>
+                                    <li>R2:<input id="getdados" type="number"></input></li>
+                                    <li>R3:<input id="getdados" type="number"></input></li>
+                                </ul>
+                            </tr>
+                        </table>
+                    </td>
+                    <td id="BlocoTabela">
+                        <div class="cube">
+                            <div class=" face frente">R0</div>
+                            <div class=" face direita">R1</div>
+                            <div class=" face atras">R2</div>
+                            <div class=" face esquerda">R3</div>
+                            <div class=" face topo"></div>
+                            <div class=" face fundo"></div>
+                        </div> 
+                        <br></br><button id="botao" value="troca">Registro</button></td>
+                    <td id="BlocoTabela">
+                        <div class="cube">
+                            <div class=" face frente">R0</div>
+                            <div class=" face direita">R1</div>
+                            <div class=" face atras">R2</div>
+                            <div class=" face esquerda">R3</div>
+                            <div class=" face topo"></div>
+                            <div class=" face fundo"></div>
+                        </div> 
+                    </br></br><button id= "botao" value ="troca">Registro</button></td>
+                    </tr>
+            </table>
+            </br>
+            <table id="tabela2">
+                <tr id="campo1">
+                    <th id="titulo">ALU Operation</th>
+                </tr>
+                <td>
+                    </br></br></br>
+                    <div class="cube">
+                        <div class=" face frente">A+B</div>
+                        <div class=" face direita">A-B</div>
+                        <div class=" face atras">A*B</div>
+                        <div class=" face esquerda">A/B</div>
+                        <div class=" face topo"></div>
+                        <div class=" face fundo"></div>
+                    </div> 
+                    </br></br>
+                    <select id="botao">
+                        <option value="+">A+B</option>
+                        <option value="-">A-B</option>
+                        <option value="*">A*B</option>
+                        <option value="/">A/B</option>
+                    </select> 
+                    <select id="botao">
+                        <option value="DECIMAL">10</option>
+                        <option value="BINARIO">2</option>
+                    </select>                          
+                    </br>
+                    <button id="botao" value=".t.">Executar</button>
+                </td>
+            </table>
+            </br></br></br>
+            <div id="placamae">
+                <table id="contatoligado" border="s" cellspacing="10" cellpadding="5">
+                    <thead>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </BR></BR></BR></BR>
+                <div id="barramento"></div>
+                <div id="barramento2"></div>
+                <div id="barramento3"></div>
+                <div id="barramento4"></div>
+                <div id="barramento5"></div>
+                <div id="processadorbase">
+                    <div id="processador">
+                    <h6>CPU<p id="display"></p></h6>
+                    </div>
+                    <div id="memoriaram">
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                    </div>
+                    <div id="memoriaram2">
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                    </div>
+                    <div id="memoriaram3">
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                    </div>
+                    <div id="memoriaram4">
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                        <div id="chipram"></div>
+                    </div>
+                    <div id="barramento6"></div>
+                    <div id="barramento7"></div>
+                    <div id="barramento8"></div>
+                    <div id="barramento9"></div>
+                    <div id="barramento10"></div>
+                    <div id="controladora"><p id="registro"></p></div>
+                    <hr id="barramento11"><hr id="barramento12">
+                    </br>
+                    placa mãe
+                </div>
+            </div>
+            </br></br></br>
+            <div id="espacogarcia">
+                <img id="garciachatado" align="right" src="https://thumbs2.imgbox.com/9e/fc/t9OiFbpj_t.jpeg" alt="Girl in a jacket" width="190" height="190">  
+                <p id="achatadofala">Hello! My Name is Garcia Achatado. What You Name "oh, came"?</p>
+            </div>
+            <h1 id="credito">Projeto desenvolvido por Andriel Moraes, Bruno Cesar, Giovanni Hikelmi e Ighor Drummond. Uniso - Todos os direitos reservados 2023 ©℗®</h4>
+        </div>
+    </div>
+</body>
+</html>
