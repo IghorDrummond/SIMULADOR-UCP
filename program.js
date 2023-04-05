@@ -24,7 +24,7 @@
     var numReg = 0; //usado para apontar dentro do array registro
     var valorSelect = "" //Responsavel por receber o valor da operação matematica escolhida pelo usuario
 
-    window.alert("Versão 1.4.8 - Alpha");//balão apenas para indicar que o site está na versão alpha - sera removido após a conclusão
+    window.alert("Versão 1.4.9 - Alpha");//balão apenas para indicar que o site está na versão alpha - sera removido após a conclusão
     desconsole = "Seja bem-vindo ao Console da pagina! Este projeto foi desenvolvido a fins academicos para simular uma movimentação";
     desconsole += " de registro."
     console.log(desconsole);
@@ -53,7 +53,6 @@
             posic[botao] = 0;
             posic[botao] += nGraus;
         }
-        window.alert(posic);
         animacubo(posic,botao);//Responsavel por posicionar o cubo no eixo Y
         SelecionaRegistro(posic[botao], botao);//aqui ele selecionara o registro escolhido
     }
@@ -129,7 +128,6 @@
         else if(posic[botao] == 270){
             escolhareg[botao] = "R1";
          }
-         window.alert(escolhareg);
     }
 /*====================================================================================================
     Função: RotacionaCubo(Posicição anterior, Posição que será a atual)
