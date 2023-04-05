@@ -33,16 +33,16 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div>            
-                    </br></br><button type="button" onclick="BotaoCubo(90, 1)" id="botao" value="troca">Registro</button>                                                    
+                    </br></br><button type="button" onclick="BotaoCubo(90, 1)" id="botao" value="troca">Registro C</button>                                                    
                     </td>
                     <td id="BlocoTabela">
                         <table>
                             <tr>
                                 <ul ID="LISTA">
-                                    <li>R0:<input onclick="Registro(1)" id="getdados" type="number"></input></li>
-                                    <li>R1:<input onclick="Registro(2)" id="getdados" type="number"></input></li>
-                                    <li>R2:<input onclick="Registro(3)" id="getdados" type="number"></input></li>
-                                    <li>R3:<input onclick="Registro(4)" id="getdados" type="number"></input></li>
+                                    <li>R0:<input classe = "getdados" onchange="Registro(0)" id="getdados0" type="number"></input></li>
+                                    <li>R1:<input classe = "getdados" onchange="Registro(1)" id="getdados1" type="number"></input></li>
+                                    <li>R2:<input classe = "getdados" onchange="Registro(2)" id="getdados2" type="number"></input></li>
+                                    <li>R3:<input classe = "getdados" onchange="Registro(3)" id="getdados3" type="number"></input></li>
                                 </ul>
                             </tr>
                         </table>
@@ -56,7 +56,7 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div> 
-                        <br></br><button id="botao" onclick="BotaoCubo(90, 2)"  value="troca">Registro</button></td>
+                        <br></br><button id="botao" onclick="BotaoCubo(90, 2)"  value="troca">Registro A</button></td>
                     <td id="BlocoTabela">
                         <div id="cube3">
                             <div class=" face frente">R0</div>
@@ -66,7 +66,7 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div> 
-                    </br></br><button id= "botao" onclick="BotaoCubo(90, 3)"  value ="troca">Registro</button></td>
+                    </br></br><button id= "botao" onclick="BotaoCubo(90, 3)"  value ="troca">Registro B</button></td>
                     </tr>
             </table>
             </br>
@@ -78,22 +78,22 @@
                     </br></br></br>
                     <div id="cube4">
                         <div class=" face frente">A+B</div>
-                        <div class=" face direita">A-B</div>
+                        <div class=" face direita">A/B</div>
                         <div class=" face atras">A*B</div>
-                        <div class=" face esquerda">A/B</div>
+                        <div class=" face esquerda">A-B</div>
                         <div class=" face topo"></div>
                         <div class=" face fundo"></div>
                     </div> 
                     </br></br>
-                    <select id="operacao" onclick="OperacaoMath()">
-                        <option id="op1"  value= '+'>A+B</option>
-                        <option id="op2"  value= '-'>A-B</option>
-                        <option id="op3"  value= '*'>A*B</option>
-                        <option id="op4"  value= '/'>A/B</option>
+                    <select id="operacao" onchange="OperacaoMath()">
+                        <option value= '+' selected>A+B</option>
+                        <option value= '-'>A-B</option>
+                        <option value= '*'>A*B</option>
+                        <option value= '/'>A/B</option>
                     </select> 
-                    <select id="operacao1">
-                        <option id="DECIMAL">10</option>
-                        <option id="BINARIO">2</option>
+                    <select id="operacao1" onchange="PegaBase()">
+                        <option value="Dec" selected>10</option>
+                        <option value="Bin">2</option>
                     </select>                          
                     </br>
                     <button type="button" id="botao" value=".t.">Executar</button>
@@ -193,7 +193,7 @@
             </br></br></br>
             <div id="espacogarcia">
                 <img id="garciachatado" align="right" src="https://thumbs2.imgbox.com/9e/fc/t9OiFbpj_t.jpeg" alt="Girl in a jacket" width="190" height="190">  
-                <p id="achatadofala">Hello! My Name is Garcia Achatado. What You Name "oh, came"?</p>
+                <p id="achatadofala"></p>
             </div>
             <h1 id="credito">Projeto desenvolvido por Andriel Moraes, Bruno Cesar, Giovanni Hikelmi e Ighor Drummond. Uniso - Todos os direitos reservados 2023 ©℗®</h4>
         </div>

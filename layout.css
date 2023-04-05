@@ -80,7 +80,34 @@
     font-size: 25px;
     color: purple;
 }
-#getdados{
+#getdados0{
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    margin: 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: purple;
+}
+#getdados1{
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    margin: 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: purple;
+}
+#getdados2{
+    width: 250px;
+    height: 35px;
+    font-size: 25px;
+    margin: 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: purple;
+}
+#getdados3{
     width: 250px;
     height: 35px;
     font-size: 25px;
