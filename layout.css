@@ -1,3 +1,10 @@
+
+/*=====================================================================================================================/*
+    Fonte: layout.css 
+    Motivo: Responsavel pelo layout da pagina e as animações correspondentes.
+    Data: 04/04/2023
+    Programador: Ighor Drummond Freitas Lima
+/*=====================================================================================================================*/
 *{
     box-sizing: border-box;
 }
@@ -139,6 +146,35 @@
     animation: BOTAOANIMADO 5s  alternate infinite;
 }
 #botao:hover {
+    border: 7px black solid;
+    border-color: palevioletred;
+    font-style: oblique;
+    font-weight: bold;
+    color: purple;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 25px;
+    text-shadow: 1px 1px 2px #427388; 
+}
+#operacao{
+    margin-top: 10px;
+    border-radius: 6px;
+    width: 200px;
+    height: 45px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    background-size: 300%;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+    color: purple;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    animation: BOTAOANIMADO 5s  alternate infinite;
+}
+#operacao:hover {
     border: 7px black solid;
     border-color: palevioletred;
     font-style: oblique;
@@ -335,11 +371,6 @@
     background: white;
     margin: auto;
 }
-/*
-#credito{
-    margin-top: 10px;
-}
-*/
 #espacogarcia{
     border: purple 4px solid;
     border-radius: 5px;
@@ -395,6 +426,37 @@
     animation: animabarra 5s  alternate infinite;           
 }
 /*Cubo 1*/
+#cube1{
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+/*Cubo 2*/
+#cube2{
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+/*Cubo 3*/
+#cube3{
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+/*Cubo 4*/
+#cube4{
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
 .face {
     background: white;
     border: 2px solid ;
@@ -411,14 +473,6 @@
     background-size: 300%;
     border-color: palevioletred;
 } 
-.cube {
-    transform: rotateX(-20deg) rotateY(-10deg);
-    transform-style: preserve-3d;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    animation: cubogirando 10s ease infinite;
- }
 .frente{
     transform: translateZ(100px);
 }
@@ -465,26 +519,6 @@
     }
     100%{
         background-position: 200% 0%;
-    }
-}
-@keyframes cubogirando{
-    0%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);             
-    }
-    25%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(90deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-    }
-    50%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-    }
-    75%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(269deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-    }
-    85%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(269deg) rotateZ(90deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-    }
-    100%{
-        transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);       
     }
 }
 @keyframes animabarra{

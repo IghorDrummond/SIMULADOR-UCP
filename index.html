@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>Simuador UCP</title>
+    <title>Simulador UCP</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                     <td id="BlocoTabela">
-                        <div class="cube">
+                        <div id="cube1">
                             <div class=" face frente">R0</div>
                             <div class=" face direita">R1</div>
                             <div class=" face atras">R2</div>
@@ -33,22 +33,22 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div>            
-                    </br></br><button id="botao" value = "troca">Registro</button>                                                     
+                    </br></br><button type="button" onclick="BotaoCubo(90, 1)" id="botao" value="troca">Registro</button>                                                    
                     </td>
                     <td id="BlocoTabela">
                         <table>
                             <tr>
                                 <ul ID="LISTA">
-                                    <li>R0:<input id="getdados" type="number"></input></li>
-                                    <li>R1:<input id="getdados" type="number"></input></li>
-                                    <li>R2:<input id="getdados" type="number"></input></li>
-                                    <li>R3:<input id="getdados" type="number"></input></li>
+                                    <li>R0:<input onclick="Registro(1)" id="getdados" type="number"></input></li>
+                                    <li>R1:<input onclick="Registro(2)" id="getdados" type="number"></input></li>
+                                    <li>R2:<input onclick="Registro(3)" id="getdados" type="number"></input></li>
+                                    <li>R3:<input onclick="Registro(4)" id="getdados" type="number"></input></li>
                                 </ul>
                             </tr>
                         </table>
                     </td>
                     <td id="BlocoTabela">
-                        <div class="cube">
+                        <div id="cube2">
                             <div class=" face frente">R0</div>
                             <div class=" face direita">R1</div>
                             <div class=" face atras">R2</div>
@@ -56,9 +56,9 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div> 
-                        <br></br><button id="botao" value="troca">Registro</button></td>
+                        <br></br><button id="botao" onclick="BotaoCubo(90, 2)"  value="troca">Registro</button></td>
                     <td id="BlocoTabela">
-                        <div class="cube">
+                        <div id="cube3">
                             <div class=" face frente">R0</div>
                             <div class=" face direita">R1</div>
                             <div class=" face atras">R2</div>
@@ -66,7 +66,7 @@
                             <div class=" face topo"></div>
                             <div class=" face fundo"></div>
                         </div> 
-                    </br></br><button id= "botao" value ="troca">Registro</button></td>
+                    </br></br><button id= "botao" onclick="BotaoCubo(90, 3)"  value ="troca">Registro</button></td>
                     </tr>
             </table>
             </br>
@@ -76,7 +76,7 @@
                 </tr>
                 <td>
                     </br></br></br>
-                    <div class="cube">
+                    <div id="cube4">
                         <div class=" face frente">A+B</div>
                         <div class=" face direita">A-B</div>
                         <div class=" face atras">A*B</div>
@@ -85,18 +85,18 @@
                         <div class=" face fundo"></div>
                     </div> 
                     </br></br>
-                    <select id="botao">
-                        <option value="+">A+B</option>
-                        <option value="-">A-B</option>
-                        <option value="*">A*B</option>
-                        <option value="/">A/B</option>
+                    <select id="operacao" onclick="OperacaoMath()">
+                        <option id="op1"  value= '+'>A+B</option>
+                        <option id="op2"  value= '-'>A-B</option>
+                        <option id="op3"  value= '*'>A*B</option>
+                        <option id="op4"  value= '/'>A/B</option>
                     </select> 
-                    <select id="botao">
-                        <option value="DECIMAL">10</option>
-                        <option value="BINARIO">2</option>
+                    <select id="operacao1">
+                        <option id="DECIMAL">10</option>
+                        <option id="BINARIO">2</option>
                     </select>                          
                     </br>
-                    <button id="botao" value=".t.">Executar</button>
+                    <button type="button" id="botao" value=".t.">Executar</button>
                 </td>
             </table>
             </br></br></br>
