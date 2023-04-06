@@ -73,6 +73,8 @@
             <table id="tabela2">
                 <tr id="campo1">
                     <th id="titulo">ALU Operation</th>
+                    <th></th>
+                    <th id="titulo">Value Number</th>
                 </tr>
                 <td>
                     </br></br></br>
@@ -92,12 +94,34 @@
                         <option value= '/'>A/B</option>
                     </select> 
                     <select id="operacao1" onchange="PegaBase()">
-                        <option value="Dec" selected>10</option>
-                        <option value="Bin">2</option>
+                        <option value="Dec" selected>Decimal (10)</option>
+                        <option value="Bin">Binario (2)</option>
                     </select>                          
                     </br>
-                    <button type="button" id="botao" value=".t.">Executar</button>
-                </td>
+                 </td>
+                 <td><button type="button" id="botao" value=".t.">Executar</button></td>
+                 <td>
+                    </br></br></br>
+                    <div id="cube5">
+                        <div class=" face frente">Zero</div>
+                        <div class=" face direita">Negative</div>
+                        <div class=" face atras">Positve</div>
+                        <div class=" face esquerda">Number Float</div>
+                        <div class=" face topo"></div>
+                        <div class=" face fundo"></div>
+                    </div>
+                    </br></br>
+                    <select id="Controle" onchange="controleSFW()">
+                        <option>Manual</option>
+                        <option>Automatico</option>
+                    </select>
+                    <select id="velocidade" onchange="Velocidade()">
+                        <option value="" selected>Velocidade</option>
+                        <option value="1">1.0X</option>
+                        <option value="1.5">1.5X</option>
+                        <option value="2">2.0X</option>
+                    </select>
+                 </td>
             </table>
             </br></br></br>
             <div id="placamae">

@@ -24,8 +24,11 @@
     var numReg = 0; //usado para apontar dentro do array registro
     var valorSelect = ""; //Responsavel por receber o valor da operação matematica escolhida pelo usuario
     var Fala = ["","","",""] //Responsavel por amarzenar as falas do Garcia Achatado
+    var velocidade = 5000; //responsavel por administrar a velocidade - valor padrão de 5000 
+    var Position = 0; //responsavel por rotacionar o cubo 5 no eixo Y correspondente
+    var Controle = "" //Define se a controladora irá operar no modo automatico ou normal
   
-    window.alert("Versão 1.5.4 - Alpha");//balão apenas para indicar que o site está na versão alpha - sera removido após a conclusão
+    window.alert("Versão 1.6.7 - Alpha");//balão apenas para indicar que o site está na versão alpha - sera removido após a conclusão
     desconsole = "Seja bem-vindo ao Console da pagina! Este projeto foi desenvolvido a fins academicos para simular uma movimentação";
     desconsole += " de registro."
     console.log(desconsole);
@@ -38,9 +41,9 @@
     //Inicio da Primeira Fala
     Fala[1] = "Olá! Meu nome é Garcia Achatado e estou disposto a te explicar o funcionamento deste Simulador." 
     Fala[1] += " No 'C Buss...' é reponsavel por receber o valor total da operação matematica de dois registro."
-    Fala[1] += " No 'A Buss...' e no 'C Buss...' é responsavel por apontar qual dos Rns você digitou o valor e qual valor você quer somar, dividir e etc..."
+    Fala[1] += " No 'A Buss...' e no 'B Buss...' é responsavel por apontar qual dos Rns você digitou o valor e qual valor você quer somar, dividir e etc..."
     Fala[1] += " Para escolher a operação, selecione no 4º Cubo abaixo da primeira tabela, o campo com valor padrão de 'A+B', Após isso aperte em 'Executar'"
-    Fala[1] += "Fique a vontade para desfrutar do programa 'OH VEIO!'."
+    Fala[1] += " Fique a vontade para desfrutar do programa 'OH VEIO!'."
     //ao iniciar a pagina, já é carregado a fala padrão do garcia achatado
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("achatadofala").innerHTML = Fala[1];
@@ -127,7 +130,6 @@
             RotacionaCubo(posicOp,270)
             posicOp = 270;    
         }
-
     }    
 /*====================================================================================================
     Função: SelecionaRegistro(numero do registro responsavel, campo responsavel pelo cubo especifico)
@@ -179,6 +181,69 @@
         var selectbase = document.querySelector('#operacao1'); //Recebe o select e seus indexs da casa decimal ou binaria
         base = selectbase.options[selectbase.selectedIndex].value;
     }
+/*====================================================================================================
+    Função: Velocidade()
+    Motivo: Responsavel por determinar quantos segundos uma animação irá durar
+    Data: 06/04/2023
+    Programadores(As): Ighor Drummond
+======================================================================================================*/
+    function Velocidade(){
+        var selectvelo = document.querySelector('#velocidade'); //Recebe o select e seus indexs da casa decimal ou binaria
+        var numero = "";
+        numero = selectvelo.options[selectvelo.selectedIndex].value;
+
+        if(numero == "1.5"){
+            velocidade = 2500;
+        }
+        else if(numero == "2"){
+            velocidade = 1000;
+        }
+        else{
+            velocidade = 5000;
+        }
+    }
+/*====================================================================================================================================
+    Função: ValorCubo(Recebe o valor total de uma operação de dois registro)
+    Motivo: Responsavel por determinar a rotação e qual é o tipo do numero, se o resultado for zero, ele mostra zero e assim em diante.
+    Data: 06/04/2023
+    Programadores(As): Ighor Drummond
+=======================================================================================================================================*/
+    function ValorCubo(Total){
+
+        if(Total > 0){
+            Position = 90;
+        }
+        else if(Total < 0){
+            Position = 180;
+        }
+        else{
+            Position = 0;
+        }
+
+        document.getElementById("cube4").animate([
+            // keyframes
+            { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " },
+            { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY("+ Position.toString()+"deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("cube5").style.msTransform = "rotatey("+Position.toString()+"deg)"; 
+        // Standard syntax
+        document.getElementById("cube5").style.transform = "rotatey("+Position.toString()+"deg)";  
+    }
+/*====================================================================================================
+    Função: controleSFW()
+    Motivo: Defini se será automatico ou não a controladora de dados
+    Data: 06/04/2023
+    Programadores(As): Ighor Drummond
+======================================================================================================*/
+    function controleSFW(){
+        var selectControl = document.querySelector('#Controle'); //Recebe o select e seus indexs da casa decimal ou binaria
+        Controle = selectControl.options[selectControl.selectedIndex].value;
+    }
+
 /*
     Hikelmi, já montei a logica de pegar os registros (R1, R2, R3 e R0) sendo essa variavel um vetor de 4 posições (que se chama registro), fiz também 
     uma outra variavel que é vetor de 3 posições ao qual retorna os Rns Escolhidos pelo usuario, em cada posição é armazenado um Rn desejado pelo usuario:
@@ -188,6 +253,7 @@
     e ja deixei como padrão, tudo no R0 para ficar certinho dps.
     Fiz também a coleta da operação matemtica que o usuario quer sendo a variavel responsavel por isso = valorSelect
     E completei também pegando se o usuario deseja operacao binaria ou decimal, sendo a variavel 'base'.
-    está tudo pronto para montar a logica, me chamar quando for começar pq tenho uma instrução para pedir a vc sobre as animações e velocidade.
+    está tudo pronto para montar a logica, me chamar quando for começar pq tenho uma instrução para pedir a vc sobre as animações e velocidade +
+    as variaveis que devem ser usadas.
     Fico no seu aguardo.
 */

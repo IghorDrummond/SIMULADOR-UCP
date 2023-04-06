@@ -24,7 +24,7 @@
 #corpo{
     position: relative;
     width: 2048px;
-    height: 2570px;
+    height: 2520px;
     color: white;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@
 #caixa{
     position: relative;
     width: 2048px;
-    height: 2570px;
+    height: 2520px;
     color: black;
     font-weight: bold;
     font-size: 10px;
@@ -65,6 +65,12 @@
     width: 250px;
     color: purple;
 }  
+#campo1{
+    height: 60px;
+    width: 250px;
+    border: 4px solid purple;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+} 
 #campo1{
     height: 60px;
     width: 250px;
@@ -231,6 +237,64 @@
     animation: BOTAOANIMADO 5s  alternate infinite;
 }
 #operacao1:hover {
+    border: 7px black solid;
+    border-color: palevioletred;
+    font-style: oblique;
+    font-weight: bold;
+    color: purple;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 25px;
+    text-shadow: 1px 1px 2px #427388; 
+}
+#velocidade{
+    margin-top: 10px;
+    border-radius: 6px;
+    width: 200px;
+    height: 45px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    background-size: 300%;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+    color: purple;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    animation: BOTAOANIMADO 5s  alternate infinite;
+}
+#velocidade:hover {
+    border: 7px black solid;
+    border-color: palevioletred;
+    font-style: oblique;
+    font-weight: bold;
+    color: purple;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 25px;
+    text-shadow: 1px 1px 2px #427388; 
+}
+#Controle{
+    margin-top: 10px;
+    border-radius: 6px;
+    width: 200px;
+    height: 45px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    background-size: 300%;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+    color: purple;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    animation: BOTAOANIMADO 5s  alternate infinite;
+}
+#Controle:hover {
     border: 7px black solid;
     border-color: palevioletred;
     font-style: oblique;
@@ -507,6 +571,14 @@
 }
 /*Cubo 4*/
 #cube4{
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+/*Cubo 5*/
+#cube5{
     transform: rotateX(0deg) rotateY(0deg);
     transform-style: preserve-3d;
     width: 200px;
