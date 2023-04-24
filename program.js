@@ -3,7 +3,7 @@
     Fonte: program.js 
     Motivo: Responsavel pela logica e funcionamento do html 'index.html' ao qual simula uma movimentação de registro.
     Data: 04/04/2023
-    Programadores(As): Ighor Drummond, Hikelmi Santos
+    Programadores(As): Ighor Drummond, Giovanni Hikelmi
 /*=====================================================================================================================*/
 /*
 ===================================
@@ -12,7 +12,7 @@
     var desconsole = ""; //Receber mensagem para enviar ao console
     var executar = ""; //Recebe o valor de execução 
     var registro = [0, 0, 0, 0]; //Recebe os valores dos Rns
-    var escolhareg = ["R0", "R0", "R0"] //Recebe registro que serão escolhido pelo usuario
+    var escolhareg = ["R0", "R0", "R0", "R0"] //Recebe registro que serão escolhido pelo usuario
     var acelerar = ""; //Recebe o x para Acelerar 
     var base = "Dec"; //recebe se vai trabalhar na base decimal ou binaria
     var Total = 0; //recebe o valor total após a operação escolhida
@@ -22,16 +22,16 @@
     var cont = 0; //usado para laços do tipo 'For'
     var posic = [0,0,0,0]; //usado para gaurdar alguns criterio estabelecido dos cubos
     var numReg = 0; //usado para apontar dentro do array registro
-    var valorSelect = ""; //Responsavel por receber o valor da operação matematica escolhida pelo usuario
+    var valorSelect = "+"; //Responsavel por receber o valor da operação matematica escolhida pelo usuario
     var Fala = ["","","",""] //Responsavel por amarzenar as falas do Garcia Achatado
     var velocidade = 5000; //responsavel por administrar a velocidade - valor padrão de 5000 
     var Position = 0; //responsavel por rotacionar o cubo 5 no eixo Y correspondente
     var Controle = "" //Define se a controladora irá operar no modo automatico ou normal
-  
-    window.alert("Versão 1.6.7 - Alpha");//balão apenas para indicar que o site está na versão alpha - sera removido após a conclusão
+    
     desconsole = "Seja bem-vindo ao Console da pagina! Este projeto foi desenvolvido a fins academicos para simular uma movimentação";
     desconsole += " de registro."
     console.log(desconsole);
+    
 /*====================================================================================================
     Escopo: Reservado para alocar as mensagens
     Motivo: Escopo Reservado para alocar as mensagens ao qual o 'Garcia Achatado' Irá falar.
@@ -175,11 +175,12 @@
     Função: PegaBase()
     Motivo: Responsavel por receber a base Decimal ou Binaria para ser operada no fonte
     Data: 05/04/2023
-    Programadores(As): Ighor Drummond
+    Programadores(As): Ighor Drummond, Giovanni Hikelmi
 ======================================================================================================*/
     function PegaBase(){
         var selectbase = document.querySelector('#operacao1'); //Recebe o select e seus indexs da casa decimal ou binaria
         base = selectbase.options[selectbase.selectedIndex].value;
+        Converte_dec_bin() //Converte os valores dos registradores de binario para decimal e vice-versa
     }
 /*====================================================================================================
     Função: Velocidade()
@@ -219,7 +220,7 @@
         else{
             Position = 0;
         }
-
+        
         document.getElementById("cube4").animate([
             // keyframes
             { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " },
@@ -245,15 +246,205 @@
     }
 
 /*
-    Hikelmi, já montei a logica de pegar os registros (R1, R2, R3 e R0) sendo essa variavel um vetor de 4 posições (que se chama registro), fiz também 
-    uma outra variavel que é vetor de 3 posições ao qual retorna os Rns Escolhidos pelo usuario, em cada posição é armazenado um Rn desejado pelo usuario:
-    Variavel = escolhareg['R0', 'R0', 'R0']
-    é tbm visto que os campos são correspondidos por
-    escolhareg[C buss, A buss, B buss]
-    e ja deixei como padrão, tudo no R0 para ficar certinho dps.
-    Fiz também a coleta da operação matemtica que o usuario quer sendo a variavel responsavel por isso = valorSelect
-    E completei também pegando se o usuario deseja operacao binaria ou decimal, sendo a variavel 'base'.
-    está tudo pronto para montar a logica, me chamar quando for começar pq tenho uma instrução para pedir a vc sobre as animações e velocidade +
-    as variaveis que devem ser usadas.
-    Fico no seu aguardo.
+    Passos:
+    5) Fazer modo manual/auto
+    6) Animação do Passo a Passo
 */
+
+/*====================================================================================================
+    Função: calculador()
+    Motivo: Lê a base numérica para fazer o cálculo conforme sua base numérica
+    Data: 23/04/2023
+    Programadores(As): Giovanni Hikelmi
+======================================================================================================*/
+    function calculador(){
+
+        if(registro[0] == NaN){
+            registro[0] == 0
+        }
+        if(registro[1] == NaN){
+            registro[1] == 0
+        }
+        if(registro[2] == NaN){
+            registro[2] == 0
+        }
+        if(registro[3] == NaN){
+            registro[3] == 0
+        }
+
+        if(base == "Dec"){
+            calcula_dec()
+        }
+        else if (base == "Bin"){
+            calcula_bin()
+        }   
+    }
+
+/*====================================================================================================
+    Função: calcula_dec()
+    Motivo: Responsavel por fazer os cálculos matemáticos decimais e binários após a conversão para decimal
+    Data: 23/04/2023
+    Programadores(As): Giovanni Hikelmi
+======================================================================================================*/
+    function calcula_dec(){
+        var val1, val2
+        var auxiliar
+
+        document.getElementById("display").textContent = ''
+        document.getElementById("registro").textContent = ''
+
+        //Busca o valor do Barramento A
+        if(escolhareg[2] == "R0"){
+            val1 = registro[0]
+        }
+        else if(escolhareg[2] == "R1"){
+            val1 = registro[1]
+        }
+        else if(escolhareg[2] == "R2"){
+            val1 = registro[2]
+        } 
+        else if(escolhareg[2] == "R3"){
+            val1 = registro[3]
+        }
+
+        //Busca o valor do Barramento B
+        if(escolhareg[3] == "R0"){
+            val2 = registro[0]
+        }
+        else if(escolhareg[3] == "R1"){
+            val2 = registro[1]
+        }
+        else if(escolhareg[3] == "R2"){
+            val2 = registro[2]
+        }
+        else if(escolhareg[3] == "R3"){
+            val2 = registro[3]
+        }
+
+        val1 = Number(val1)
+        val2 = Number(val2)
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Animação dos barramentos indo para o CPU
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+        //Espera um tempo para mostrar o valor na CPU
+        setTimeout(function(){
+            if(base == "Dec"){
+                document.getElementById("display").textContent = String(val1) + valorSelect + String(val2)
+            }
+            else if(base == "Bin"){
+                document.getElementById("display").textContent = parseInt(val1).toString(2) + valorSelect + parseInt(val2).toString(2)
+            }
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Animação dos barramentos indo do CPU para o Registrador
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+        }, velocidade)
+
+        if(valorSelect == "+"){
+            Total = val1 + val2
+        }
+        else if(valorSelect == "-"){
+            Total = val1 - val2
+        }
+        else if(valorSelect == "*"){
+            Total = val1 * val2
+        }
+        else if(valorSelect == "/"){
+            Total = val1 / val2
+        }
+        //Espera um tempo para mostrar o valor no registrador
+        setTimeout(function(){
+            if(base == "Dec"){
+                document.getElementById("registro").textContent = String(parseInt(Total))
+            }
+            else if(base == "Bin"){
+                document.getElementById("registro").textContent = parseInt(Total).toString(2)
+            }
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Animação dos barramentos indo do Registrador para a RAM
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+        }, velocidade*2)
+
+        auxiliar = -1
+        if (Controle == "Automatico" || escolhareg[1] == "R3"){
+            registro[3] = Total
+            if(base == "Dec"){
+                auxiliar = 3
+            }
+        }
+        else if(escolhareg[1] == "R0"){
+            registro[0] = Total
+            if(base == "Dec"){
+                auxiliar = 0
+            }
+        }
+        else if(escolhareg[1] == "R1"){
+            registro[1] = Total
+            if(base == "Dec"){
+                auxiliar = 1
+            }
+        }
+        else if(escolhareg[1] == "R2"){
+            registro[2] = Total
+            if(base == "Dec"){
+                auxiliar = 2
+            }
+        }
+        //Espera um tempo para mostrar o novo calor no input do registrador
+        setTimeout(function(){
+            if (auxiliar >= 0 && auxiliar <= 3){
+                document.getElementById(`getdados${auxiliar}`).value = parseInt(registro[auxiliar])
+            }
+        }, velocidade*2)
+    }
+
+/*====================================================================================================
+    Função: calcula_bin()
+    Motivo: Converte binário para decimal para realizar cálculos, depois retorna os valores em binário
+    Data: 23/04/2023
+    Programadores(As): Giovanni Hikelmi
+======================================================================================================*/
+    function calcula_bin(){
+        var indice
+        for(indice = 0; indice < 4; indice++){
+            registro[indice] = parseInt(String(registro[indice]), 2)
+            //document.getElementById(`getdados${indice}`).value = parseInt(String(registro[indice]))
+        }
+
+        calcula_dec()
+        
+        for(indice = 0; indice < 4; indice++){
+            registro[indice] = parseInt((parseInt(registro[indice])).toString(2))
+        }
+        
+        //Espera um tempo para mostrar o novo calor no input do registrador
+        setTimeout(function(){
+            document.getElementById('getdados0').value = parseInt(registro[0])
+            document.getElementById('getdados1').value = parseInt(registro[1])
+            document.getElementById('getdados2').value = parseInt(registro[2])
+            document.getElementById('getdados3').value = parseInt(registro[3])
+        }, velocidade*2)
+
+    }
+
+/*====================================================================================================
+    Função: Converte_dec-bin()
+    Motivo: Converte a base de decimal para binário e vice-versa e sobrescreve os inputs dos registros
+    Data: 23/04/2023
+    Programadores(As): Giovanni Hikelmi
+======================================================================================================*/
+    function Converte_dec_bin(){
+        var indice
+
+        if (base == "Bin"){
+            for(indice = 0; indice < 4; indice++){
+                registro[indice] = parseInt(parseInt(registro[indice]).toString(2))
+                document.getElementById(`getdados${indice}`).value = parseInt(registro[indice])
+            }
+        }
+        else if (base == "Dec"){
+            for(indice = 0; indice < 4; indice++){
+                registro[indice] = parseInt(String(registro[indice]), 2)
+                document.getElementById(`getdados${indice}`).value = parseInt(registro[indice])
+            }
+        }
+    }
