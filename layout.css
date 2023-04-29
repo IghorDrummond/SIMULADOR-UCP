@@ -649,20 +649,3 @@
         background-position: 200% 0%;
     }
 }
-@keyframes animabarra{
-    0%{
-        border: black 4px solid;
-    }
-    25%{
-        border: yellow 4px solid;   
-    }
-    45%{
-        border: black 4px solid;              
-    }
-    75%{
-        border: yellow 4px solid;   
-    }
-    95%{
-        border: black 4px solid;
-    }
-}

@@ -49,9 +49,18 @@
         document.getElementById("achatadofala").innerHTML = Fala[1];
 
     });
-    Fala[2] = "" //em breve
-    Fala[3] = "" //em breve
-    Fala[4] = "" //em breve
+    Fala[2] = "O processador se comunica com a memória principal através do barramento de endereços e do barramento de dados." 
+    Fala[2] += " O barramento de endereços é usado para enviar o endereço da memória que o processador deseja acessar e o barramento de dados é" 
+    Fala[2] += " usado para enviar os dados que serão lidos ou escritos na memória." 
+
+    Fala[3] = "A Unidade Lógica e Aritmética (ULA) realiza as principais operações lógicas e aritméticas do computador. "
+    Fala[3] += "Ela executa funções aritméticas como soma, subtração, divisão e determina se um número é positivo ou negativo ou se é zero."
+    Fala[3] += " A ULA está envolvida principalmente em operações lógicas e matemáticas, incluindo operações de troca de bits." 
+
+    Fala[4] = "É coletado as informações (dados), e depois esses dados são enviados para os endereços A e B respectivamente," 
+    Fala[4] += "após isso esses valores vão para ULA que irá realizar cálculos selecionado, após isso o resultado e enviado para a memória C." 
+
+    Fala[5] = "No final o resultado é enviado para o registrador representado pelo endereço C (R0, R1, R2 ou R3)."
 /*===============================================================
     Função: Registro(Recebe o Rn digitado)
     Motivo: responsavel por pegar os valores dos R0, R1, R2 e R3
@@ -245,12 +254,6 @@
         Controle = selectControl.options[selectControl.selectedIndex].value;
     }
 
-/*
-    Passos:
-    5) Fazer modo manual/auto
-    6) Animação do Passo a Passo
-*/
-
 /*====================================================================================================
     Função: calculador()
     Motivo: Lê a base numérica para fazer o cálculo conforme sua base numérica
@@ -279,7 +282,6 @@
             calcula_bin()
         }   
     }
-
 /*====================================================================================================
     Função: calcula_dec()
     Motivo: Responsavel por fazer os cálculos matemáticos decimais e binários após a conversão para decimal
@@ -325,19 +327,107 @@
         val2 = Number(val2)
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Animação dos barramentos indo para o CPU
+Programadores(As): Giovanni Hikelmi, Ighor Drummond
+Data: 28/04/2023
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+    //Escopo reservado para animação
+        document.getElementById("achatadofala").innerHTML = Fala[2]
+        document.getElementById("barramento").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento2").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento3").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento4").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento5").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });     
+  
         //Espera um tempo para mostrar o valor na CPU
-        setTimeout(function(){
-            if(base == "Dec"){
-                document.getElementById("display").textContent = String(val1) + valorSelect + String(val2)
-            }
-            else if(base == "Bin"){
-                document.getElementById("display").textContent = parseInt(val1).toString(2) + valorSelect + parseInt(val2).toString(2)
-            }
-/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Animação dos barramentos indo do CPU para o Registrador
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-        }, velocidade)
+    setTimeout(function(){
+        document.getElementById("achatadofala").innerHTML = Fala[3]
+        document.getElementById("processadorbase").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });   
+        document.getElementById("processador").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        if(base == "Dec"){
+            document.getElementById("display").textContent = String(val1) + valorSelect + String(val2)
+        }
+        else if(base == "Bin"){
+            document.getElementById("display").textContent = parseInt(val1).toString(2) + valorSelect + parseInt(val2).toString(2)
+        }
+    }, velocidade)      
+        
 
         if(valorSelect == "+"){
             Total = val1 + val2
@@ -351,18 +441,97 @@ Animação dos barramentos indo do CPU para o Registrador
         else if(valorSelect == "/"){
             Total = val1 / val2
         }
-        //Espera um tempo para mostrar o valor no registrador
-        setTimeout(function(){
-            if(base == "Dec"){
-                document.getElementById("registro").textContent = String(parseInt(Total))
-            }
-            else if(base == "Bin"){
-                document.getElementById("registro").textContent = parseInt(Total).toString(2)
-            }
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Animação dos barramentos indo do Registrador para a RAM
+Animação dos barramentos indo do CPU para o Registrador
+Programadores(As): Giovanni Hikelmi, Ighor Drummond
+Data: 28/04/2023
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-        }, velocidade*2)
+    setTimeout(function(){
+        document.getElementById("achatadofala").innerHTML = Fala[4]
+        document.getElementById("barramento6").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento7").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento8").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento9").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });  
+        document.getElementById("barramento10").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });     
+    }, velocidade*2)
+
+     //Espera um tempo para mostrar o valor no registrador
+    setTimeout(function(){
+        document.getElementById("achatadofala").innerHTML = Fala[5]
+        document.getElementById("controladora").animate([
+            // keyframes
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" },
+            { border: "yellow 4px solid" },
+            { border: "black 4px solid" }
+        ], {
+            // timing options
+            duration: velocidade,
+            iterations: 1
+        });    
+        if(base == "Dec"){
+            document.getElementById("registro").textContent = String(parseInt(Total))
+        }
+        else if(base == "Bin"){
+            document.getElementById("registro").textContent = parseInt(Total).toString(2)
+        }
+    }, velocidade*3)
 
         auxiliar = -1
         if (Controle == "Automatico" || escolhareg[1] == "R3"){
@@ -389,14 +558,65 @@ Animação dos barramentos indo do Registrador para a RAM
                 auxiliar = 2
             }
         }
-        //Espera um tempo para mostrar o novo calor no input do registrador
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Animação dos barramentos indo do Controladora para a Memoria Ram
+Programadores(As): Giovanni Hikelmi, Ighor Drummond
+Data: 28/04/2023
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
         setTimeout(function(){
+            document.getElementById("memoriaram").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram2").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram3").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram4").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
             if (auxiliar >= 0 && auxiliar <= 3){
                 document.getElementById(`getdados${auxiliar}`).value = parseInt(registro[auxiliar])
             }
-        }, velocidade*2)
+        }, velocidade*4)        
     }
-
 /*====================================================================================================
     Função: calcula_bin()
     Motivo: Converte binário para decimal para realizar cálculos, depois retorna os valores em binário
@@ -418,11 +638,59 @@ Animação dos barramentos indo do Registrador para a RAM
         
         //Espera um tempo para mostrar o novo calor no input do registrador
         setTimeout(function(){
+            document.getElementById("memoriaram").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram2").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram3").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("memoriaram4").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
             document.getElementById('getdados0').value = parseInt(registro[0])
             document.getElementById('getdados1').value = parseInt(registro[1])
             document.getElementById('getdados2').value = parseInt(registro[2])
             document.getElementById('getdados3').value = parseInt(registro[3])
-        }, velocidade*2)
+        }, velocidade*4)
 
     }
 
