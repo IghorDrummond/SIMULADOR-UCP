@@ -13,14 +13,14 @@
     var executar = ""; //Recebe o valor de execução 
     var registro = [0, 0, 0, 0]; //Recebe os valores dos Rns
     var escolhareg = ["R0", "R0", "R0", "R0"] //Recebe registro que serão escolhido pelo usuario
-    var acelerar = ""; //Recebe o x para Acelerar 
+    var acelerar = ""; //Recebe a velocidade para Acelerar 
     var base = "Dec"; //recebe se vai trabalhar na base decimal ou binaria
     var Total = 0; //recebe o valor total após a operação escolhida
     var posicOp = 0//Guarda a posição anterior do cubo de operacao matematica
     var binario = 0; //recebe o valor binario
     var resto = 0; //recebe o valor resto da divisão para binario
     var cont = 0; //usado para laços do tipo 'For'
-    var posic = [0,0,0,0]; //usado para gaurdar alguns criterio estabelecido dos cubos
+    var posic = [0,0,0,0,0]; //usado para guardar alguns criterio estabelecido dos cubos
     var numReg = 0; //usado para apontar dentro do array registro
     var valorSelect = "+"; //Responsavel por receber o valor da operação matematica escolhida pelo usuario
     var Fala = ["","","",""] //Responsavel por amarzenar as falas do Garcia Achatado
@@ -28,6 +28,7 @@
     var Position = 0; //responsavel por rotacionar o cubo 5 no eixo Y correspondente
     var Controle = "" //Define se a controladora irá operar no modo automatico ou normal
     
+    posic[5] = 0 //recebe valor padrão de zero para o cubo 5 ficar na posição correta
     desconsole = "Seja bem-vindo ao Console da pagina! Este projeto foi desenvolvido a fins academicos para simular uma movimentação";
     desconsole += " de registro."
     console.log(desconsole);
@@ -49,17 +50,18 @@
         document.getElementById("achatadofala").innerHTML = Fala[1];
 
     });
+    //Segunda Fala
     Fala[2] = "O processador se comunica com a memória principal através do barramento de endereços e do barramento de dados." 
     Fala[2] += " O barramento de endereços é usado para enviar o endereço da memória que o processador deseja acessar e o barramento de dados é" 
     Fala[2] += " usado para enviar os dados que serão lidos ou escritos na memória." 
-
+    //Terceira Fala
     Fala[3] = "A Unidade Lógica e Aritmética (ULA) realiza as principais operações lógicas e aritméticas do computador. "
     Fala[3] += "Ela executa funções aritméticas como soma, subtração, divisão e determina se um número é positivo ou negativo ou se é zero."
     Fala[3] += " A ULA está envolvida principalmente em operações lógicas e matemáticas, incluindo operações de troca de bits." 
-
+    //Quarta Fala
     Fala[4] = "É coletado as informações (dados), e depois esses dados são enviados para os endereços A e B respectivamente," 
     Fala[4] += "após isso esses valores vão para ULA que irá realizar cálculos selecionado, após isso o resultado e enviado para a memória C." 
-
+    //Quinta Fala
     Fala[5] = "No final o resultado é enviado para o registrador representado pelo endereço C (R0, R1, R2 ou R3)."
 /*===============================================================
     Função: Registro(Recebe o Rn digitado)
@@ -531,6 +533,7 @@ Data: 28/04/2023
         else if(base == "Bin"){
             document.getElementById("registro").textContent = parseInt(Total).toString(2)
         }
+        GiraCubo();    
     }, velocidade*3)
 
         auxiliar = -1
@@ -612,10 +615,35 @@ Data: 28/04/2023
                 duration: velocidade,
                 iterations: 1
             }); 
+            document.getElementById("barramento11").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("barramento12").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
             if (auxiliar >= 0 && auxiliar <= 3){
                 document.getElementById(`getdados${auxiliar}`).value = parseInt(registro[auxiliar])
             }
-        }, velocidade*4)        
+        }, velocidade*4)     
+
     }
 /*====================================================================================================
     Função: calcula_bin()
@@ -686,14 +714,36 @@ Data: 28/04/2023
                 duration: velocidade,
                 iterations: 1
             }); 
+            document.getElementById("barramento11").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
+            document.getElementById("barramento12").animate([
+                // keyframes
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" },
+                { border: "yellow 4px solid" },
+                { border: "black 4px solid" }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            }); 
             document.getElementById('getdados0').value = parseInt(registro[0])
             document.getElementById('getdados1').value = parseInt(registro[1])
             document.getElementById('getdados2').value = parseInt(registro[2])
             document.getElementById('getdados3').value = parseInt(registro[3])
         }, velocidade*4)
-
     }
-
 /*====================================================================================================
     Função: Converte_dec-bin()
     Motivo: Converte a base de decimal para binário e vice-versa e sobrescreve os inputs dos registros
@@ -714,5 +764,62 @@ Data: 28/04/2023
                 registro[indice] = parseInt(String(registro[indice]), 2)
                 document.getElementById(`getdados${indice}`).value = parseInt(registro[indice])
             }
+        }
+    }
+/*====================================================================================================
+    Função: GiraCubo
+    Motivo: Rotaciona o cubo 4 no eixo y para apresentar se é positivo, negativo ou zero.
+    Data: 29/04/2023
+    Programadores(As): Ighor Drummond
+======================================================================================================*/
+    function  GiraCubo(){
+       
+        if(Total == 0){
+            document.getElementById("cube5").animate([
+                // keyframes
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY("+posic[5].toString()+"deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " },
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            });
+            //adiciona a nova posição que o cubo estará na posição Y
+            document.getElementById("cube5").style.msTransform = "rotatey(0deg)"; 
+            // Standard syntax
+            document.getElementById("cube5").style.transform = "rotatey(0deg)"; 
+            posic[5] = 0
+        }
+        else if(Total > 0){
+            document.getElementById("cube5").animate([
+                // keyframes
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY("+posic[5].toString()+"deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " },
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(90deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            });
+            //adiciona a nova posição que o cubo estará na posição Y
+            document.getElementById("cube5").style.msTransform = "rotatey(90deg)"; 
+            // Standard syntax
+            document.getElementById("cube5").style.transform = "rotatey(90deg)";            
+            posic[5] = 90
+        }
+        else{
+            document.getElementById("cube5").animate([
+                // keyframes
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY("+posic[5].toString()+"deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " },
+                { transform: "scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg) " }
+            ], {
+                // timing options
+                duration: velocidade,
+                iterations: 1
+            });
+            //adiciona a nova posição que o cubo estará na posição Y
+            document.getElementById("cube5").style.msTransform = "rotatey(180deg)"; 
+            // Standard syntax
+            document.getElementById("cube5").style.transform = "rotatey(180deg)";            
+            posic[5] = 180
         }
     }
